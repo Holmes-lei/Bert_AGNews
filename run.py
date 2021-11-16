@@ -20,7 +20,7 @@ def split_dataset(df):
     return train_set,val_set
 
 # df_raw = pd.read_csv("train.csv",nrows =20,encoding='utf-8',header=None,names=["y","title","text"]) # 截取前20行
-df_raw_train = pd.read_csv("train.csv",encoding='utf-8',header=None,names=["y","title","text"])
+df_raw_train = pd.read_csv("./data/train.csv",encoding='utf-8',header=None,names=["y","title","text"])
 df_raw_train["text"] = df_raw_train["title"].str.cat(df_raw_train["text"],sep=' ') # 将SGNews数据集的Title和Context都连接起来
 print(df_raw_train.head())
 
@@ -55,7 +55,7 @@ print(df_raw_train)
 
 train_data,val_data = split_dataset(df_raw_train)
 
-df_raw_test = pd.read_csv("test.csv",encoding='utf-8',header=None,names=["y","title","text"])
+df_raw_test = pd.read_csv("./data/test.csv",encoding='utf-8',header=None,names=["y","title","text"])
 df_raw_test["text"] = df_raw_test["title"].str.cat(df_raw_test["text"],sep=' ') # 将SGNews数据集的Title和Context都连接起来
 
 df_raw_test["y"] = df_raw_test["y"].astype(int) # 将原始数据的y列中的全部值也就是原始数据集对应的label的序号转换成int类型，看前面载入数据时，将label序号那一列的名字起为了y
